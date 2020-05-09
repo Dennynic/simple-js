@@ -1,0 +1,32 @@
+{
+  "name": "js-native-blog",
+  "version": "1.0.0",
+  "description": "js native blog",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dennynic/simple-js.git"
+  },
+  "keywords": [
+    "js",
+    "blog",
+    "javascript"
+  ],
+  "author": "Dennynic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dennynic/simple-js/issues"
+  },
+  "homepage": "https://github.com/Dennynic/simple-js#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.0-beta.14",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
