@@ -1,26 +1,33 @@
-const HTMLPlugin = require('html-webpack-plugin');
+const HTMLPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: ['@babel/polyfill', './src/index.js'],
+  entry: ["@babel/polyfill", "./src/index.js"],
   output: {
-    path: __dirname + '/dist',
-    filename: 'bundle.js'
+    path: __dirname + "/dist",
+    filename: "bundle.js",
   },
-  devServer:{
-    contentBase: __dirname + '/dist'
+  devServer: {
+    contentBase: __dirname + "/dist",
   },
   plugins: [
     new HTMLPlugin({
-      filename: 'index.html',
-      template: './src/index.html'
-    })
+      filename: "index.html",
+      template: "./src/index.html",
+    }),
   ],
   resolve: {
-    extensions: ['.js']
+    extensions: [".js"],
   },
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
-    ]
-  }
+      { test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
