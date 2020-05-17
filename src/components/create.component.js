@@ -1,6 +1,7 @@
 import { Component } from "../core/component";
 import { Form } from "../core/form";
 import { Validators } from "../core/validators";
+import { apiService } from "../services/api.service";
 
 export class CreateComponent extends Component {
   constructor(id) {
@@ -16,7 +17,7 @@ export class CreateComponent extends Component {
   }
 }
 
-function submitFormHandler(event) {
+async function submitFormHandler(event) {
   event.preventDefault();
   if (this.form.isValid()) {
     const formData = {
@@ -24,7 +25,8 @@ function submitFormHandler(event) {
       date: new Date().toLocaleDateString(),
       ...this.form.value(),
     };
+    await apiService.createPost(formData);
     this.form.clear();
-    console.log("FormData", formData);
+    alert("Post Created in DB");
   }
 }
