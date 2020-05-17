@@ -20,14 +20,14 @@ function tabClickHandler(event) {
   const elementClassList = event.target.classList;
   const isElementHasClass = elementClassList.contains("tab");
   if (isElementHasClass) {
-    Array.from(this.$element.querySelectorAll(".tab")).map((tab) => {
+    Array.from(this.$element.querySelectorAll(".tab")).forEach((tab) => {
       tab.classList.remove("active");
     });
     elementClassList.add("active");
     const activeTab = this.tabs.find(
       (tab) => tab.name === event.target.dataset.name
     );
-    this.tabs.map((tab) => tab.component.hide());
+    this.tabs.forEach((tab) => tab.component.hide());
     activeTab.component.show();
   }
 }

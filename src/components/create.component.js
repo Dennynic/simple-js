@@ -11,7 +11,7 @@ export class CreateComponent extends Component {
     this.$element.addEventListener("submit", submitFormHandler.bind(this));
     this.form = new Form(this.$element, {
       title: [Validators.required],
-      fulltext: [Validators.required, Validators.minLength(10)],
+      fulltext: [Validators.required, Validators.minLength(5)],
     });
   }
 }
@@ -21,9 +21,10 @@ function submitFormHandler(event) {
   if (this.form.isValid()) {
     const formData = {
       type: this.$element.type.value,
+      date: new Date().toLocaleDateString(),
       ...this.form.value(),
     };
     this.form.clear();
-    console.log("formData", formData);
+    console.log("FormData", formData);
   }
 }

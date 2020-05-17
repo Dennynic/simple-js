@@ -5,14 +5,14 @@ export class Form {
   }
 
   clear() {
-    Object.keys(this.controls).map((control) => {
+    Object.keys(this.controls).forEach((control) => {
       this.form[control].value = "";
     });
   }
 
   value() {
     const elements = {};
-    Object.keys(this.controls).map((control) => {
+    Object.keys(this.controls).forEach((control) => {
       elements[control] = this.form[control].value;
     });
     return elements;
@@ -20,10 +20,10 @@ export class Form {
 
   isValid() {
     let isFormValid = true;
-    Object.keys(this.controls).map((control) => {
+    Object.keys(this.controls).forEach((control) => {
       const validators = this.controls[control];
       let isValid = true;
-      validators.map((validator) => {
+      validators.forEach((validator) => {
         isValid = validator(this.form[control].value) && isValid;
       });
 
