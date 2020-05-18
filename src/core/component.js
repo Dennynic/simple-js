@@ -8,11 +8,17 @@ export class Component {
 
   init() {}
 
+  onShow() {}
+
+  onHide() {}
+
   hide() {
     this.$element.classList.add("hide");
+    this.onHide();
   }
 
   show() {
     this.$element.classList.remove("hide");
+    this.onShow();
   }
 }
