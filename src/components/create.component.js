@@ -3,6 +3,8 @@ import { Form } from "../core/form";
 import { Validators } from "../core/validators";
 import { apiService } from "../services/api.service";
 
+const FULL_TEXT_MIN_LENGTH = 5;
+
 export class CreateComponent extends Component {
   constructor(id) {
     super(id);
@@ -12,7 +14,7 @@ export class CreateComponent extends Component {
     this.$element.addEventListener("submit", submitFormHandler.bind(this));
     this.form = new Form(this.$element, {
       title: [Validators.required],
-      fulltext: [Validators.required, Validators.minLength(5)],
+      fulltext: [Validators.required, Validators.minLength(FULL_TEXT_MIN_LENGTH)],
     });
   }
 }
