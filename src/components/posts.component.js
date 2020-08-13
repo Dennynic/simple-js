@@ -3,9 +3,13 @@ import { apiService } from "../services/api.service";
 import { TransformService } from "../services/transform.service";
 
 export class PostsComponent extends Component {
-  constructor(id, {loader}) {
+  constructor(id, { loader }) {
     super(id);
     this.loader = loader;
+  }
+
+  init() {
+    this.$element.addEventListener("click", buttonClickHandler);
   }
 
   async onShow() {
@@ -27,8 +31,14 @@ function renderPost(post) {
     post.type === "news"
       ? ` <li class="tag tag-blue tag-rounded">Новость</li>`
       : ` <li class="tag tag-rounded">Заметка</li>`;
-  const button =
-    '<button class = "button-round button-small button-primary">Сохранить</button>';
+
+  const isFavorites = (
+    JSON.parse(localStorage.getItem("favorites")) || []
+  ).includes(post.id);
+
+  const button = isFavorites
+    ? `<button data-id="${post.id}" class = "button-round button-small button-danger">Удалить</button>`
+    : `<button data-id="${post.id}" class = "button-round button-small button-primary">Сохранить</button>`;
 
   return `<div class="panel">
             <div class="panel-head">
@@ -46,3 +56,25 @@ function renderPost(post) {
             </div>
         </div>`;
 }
+
+const buttonClickHandler = (event) => {
+  const $el = event.target;
+  const id = $el.dataset.id;
+
+  if (id) {
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (favorites.includes(id)) {
+      $el.textContent = "Сохранить";
+      $el.classList.add("button-primary");
+      $el.classList.remove("button-danger");
+      favorites = favorites.filter(fId => fId !== id);
+    } else {
+      $el.classList.add("button-danger");
+      $el.classList.remove("button-primary");
+      $el.textContent = "Удалить";
+      favorites.push(id);
+    }
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
+};
