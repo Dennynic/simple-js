@@ -1,7 +1,7 @@
-import { Component } from "../core/component";
-import { Form } from "../core/form";
-import { Validators } from "../core/validators";
-import { apiService } from "../services/api.service";
+import { Component } from '../core/component';
+import { Form } from '../core/form';
+import { Validators } from '../core/validators';
+import { apiService } from '../services/api.service';
 
 const FULL_TEXT_MIN_LENGTH = 5;
 
@@ -11,10 +11,13 @@ export class CreateComponent extends Component {
   }
 
   init() {
-    this.$element.addEventListener("submit", submitFormHandler.bind(this));
+    this.$element.addEventListener('submit', submitFormHandler.bind(this));
     this.form = new Form(this.$element, {
       title: [Validators.required],
-      fulltext: [Validators.required, Validators.minLength(FULL_TEXT_MIN_LENGTH)],
+      fulltext: [
+        Validators.required,
+        Validators.minLength(FULL_TEXT_MIN_LENGTH),
+      ],
     });
   }
 }
@@ -29,6 +32,6 @@ async function submitFormHandler(event) {
     };
     await apiService.createPost(formData);
     this.form.clear();
-    alert("Post Created in DB");
+    alert('Post Created in DB');
   }
 }

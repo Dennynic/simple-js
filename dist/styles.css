@@ -60,3 +60,6 @@ textarea {
 .button-primary{
   float: right;
 }
+.center{
+    text-align: center;
+}

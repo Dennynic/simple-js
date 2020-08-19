@@ -1,4 +1,4 @@
-import css from "./style.css";
+import css from './style.css';
 
 export class Component {
   constructor(id) {
@@ -13,12 +13,12 @@ export class Component {
   onHide() {}
 
   hide() {
-    this.$element.classList.add("hide");
+    this.$element.classList.add('hide');
     this.onHide();
   }
 
   show() {
-    this.$element.classList.remove("hide");
+    this.$element.classList.remove('hide');
     this.onShow();
   }
 }

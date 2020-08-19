@@ -29,7 +29,7 @@
   </head>
   <body>
     <header id="header">
-      <h1 class="title">БЛОГ 001001</h1>
+      <h1 class="title">БЛОГ</h1>
       <h2 class="subtitle">Создавайте статьи и добавляйте их в избранное</h2>
       <button
         class="get-started button button-primary button-large js-header-start"
@@ -56,13 +56,19 @@
         <h1 class="h4">Создать новый пост</h1>
 
         <div class="form-control">
-          <label>Название</label>
-          <input type="text" name="title" placeholder="Введите название" />
+          <label for="title">Название</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Введите название"
+          />
         </div>
 
         <div class="form-control">
-          <label>Текст</label>
+          <label for="text">Текст</label>
           <textarea
+            id="text"
             name="fulltext"
             placeholder="Введите текст поста"
           ></textarea>

@@ -5,14 +5,14 @@ export class Form {
   }
 
   clear() {
-    Object.keys(this.controls).forEach((control) => {
-      this.form[control].value = "";
+    Object.keys(this.controls).forEach(control => {
+      this.form[control].value = '';
     });
   }
 
   value() {
     const elements = {};
-    Object.keys(this.controls).forEach((control) => {
+    Object.keys(this.controls).forEach(control => {
       elements[control] = this.form[control].value;
     });
     return elements;
@@ -20,10 +20,10 @@ export class Form {
 
   isValid() {
     let isFormValid = true;
-    Object.keys(this.controls).forEach((control) => {
+    Object.keys(this.controls).forEach(control => {
       const validators = this.controls[control];
       let isValid = true;
-      validators.forEach((validator) => {
+      validators.forEach(validator => {
         isValid = validator(this.form[control].value) && isValid;
       });
 
@@ -38,12 +38,12 @@ export class Form {
 function setError($control) {
   clearError($control);
   const error = '<p class="validation-error">Введите корректное значение</p>';
-  $control.classList.add("invalid");
-  $control.insertAdjacentHTML("afterend", error);
+  $control.classList.add('invalid');
+  $control.insertAdjacentHTML('afterend', error);
 }
 
 function clearError($control) {
-  $control.classList.remove("invalid");
+  $control.classList.remove('invalid');
   $control.nextSibling &&
-    $control.closest(".form-control").removeChild($control.nextSibling);
+    $control.closest('.form-control').removeChild($control.nextSibling);
 }
