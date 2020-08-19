@@ -5,23 +5,36 @@ class ApiService {
 
   async createPost(post) {
     try {
-      const requestStr = this.url + "/posts.json";
+      const requestStr = `${this.url}/posts.json`;
       const requestOptions = {
-        method: "post",
+        method: 'post',
         body: JSON.stringify(post),
       };
 
       return useRequest(requestStr, requestOptions);
     } catch (e) {
-      console.log("Error", e);
+      console.log('Error', e);
     }
   }
 
   async fetchPosts() {
     try {
-      const requestStr = this.url + "/posts.json";
+      const requestStr = `${this.url}/posts.json`;
       const requestOptions = {
-        method: "get",
+        method: 'get',
+      };
+
+      return useRequest(requestStr, requestOptions);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async fetchPostById(id) {
+    try {
+      const requestStr = `${this.url}/posts/${id}.json`;
+      const requestOptions = {
+        method: 'get',
       };
 
       return useRequest(requestStr, requestOptions);
@@ -37,4 +50,4 @@ async function useRequest(requestStr, requestOptions) {
   return await response.json();
 }
 
-export const apiService = new ApiService("https://simple-js.firebaseio.com");
+export const apiService = new ApiService('https://simple-js.firebaseio.com');

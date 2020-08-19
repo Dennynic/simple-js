@@ -1,4 +1,4 @@
-import { Component } from "../core/component";
+import { Component } from '../core/component';
 
 export class HeaderComponent extends Component {
   constructor(id) {
@@ -6,15 +6,15 @@ export class HeaderComponent extends Component {
   }
 
   init() {
-    if (localStorage.getItem("visited")) {
+    if (localStorage.getItem('visited')) {
       this.hide();
     }
-    const btn = this.$element.querySelector(".js-header-start");
-    btn.addEventListener("click", buttonHandler.bind(this));
+    const btn = this.$element.querySelector('.js-header-start');
+    btn.addEventListener('click', buttonHandler.bind(this));
   }
 }
 
 function buttonHandler() {
-  localStorage.setItem("visited", JSON.stringify(true));
+  localStorage.setItem('visited', JSON.stringify(true));
   this.hide();
 }
